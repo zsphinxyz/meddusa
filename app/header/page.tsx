@@ -31,7 +31,7 @@ const Header = () => {
         }
     ];
     return (
-        <div className="flex bg-stone-200 py-2 px-4 justify-between items-center lg:justify-around">
+        <div className="px-10 flex bg-stone-200 py-2 md:px-5 justify-between items-center lg:justify-around">
 
             <div className="flex items-center gap-2">
                 <Image src={logo} width={70} alt='med-dusa' />

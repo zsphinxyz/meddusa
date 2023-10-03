@@ -1,10 +1,11 @@
 import Header from "./header/page";
+import Banner from "@/comps/banner"
 
 export default function Home() {
   return (
-    <main className="">
+    <main>
       <Header />
-      <h1>Home</h1>
+      <Banner/>
     </main>
   )
 }
