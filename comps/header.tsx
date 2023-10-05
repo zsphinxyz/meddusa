@@ -34,16 +34,18 @@ const Header = () => {
         <div className="px-10 flex bg-stone-200 py-2 md:px-5 justify-between items-center lg:justify-around">
 
             <div className="flex items-center gap-2">
-                <Image src={logo} width={70} alt='med-dusa' />
-                <h1 className=" text-2xl font-extrabold text-slate-800" >Med<span className="text-red-500">-</span>Dusa</h1>
+                <Link href="/">
+                    <Image src={logo} width={70} alt='med-dusa' />
+                </Link>
+                <h1 className=" text-2xl font-extrabold text-slate-800 select-none" >Med<span className="text-red-500">-</span>Dusa</h1>
             </div>
 
             <div>
-                <div onClick={() => setMenu(!menu)} className=" md:hidden">
+                <button onClick={() => setMenu(!menu)} className=" md:hidden">
                     {menu ? <BiMenu className=" text-[40px] hover:cursor-pointer" /> :
                         <AiOutlineClose className=" text-[40px] hover:cursor-pointer" />
                     }
-                </div>
+                </button>
 
                 <div className="hidden md:flex gap-2 lg:gap-4">
                     {
