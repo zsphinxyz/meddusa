@@ -1,8 +1,8 @@
 import Link from "next/link"
 import {GiHospitalCross} from 'react-icons/gi'
 import {TbBuildingHospital} from 'react-icons/tb'
-import {FaTruckMedical} from 'react-icons/fa6'
-import { ElementType, FunctionComponent, ReactNode } from "react"
+import {FaTruckMedical, FaUserDoctor, FaRegCalendarPlus} from 'react-icons/fa6'
+import {MdOutlineBedroomChild, MdMan} from 'react-icons/md'
 
 const Content = () => {
 
@@ -37,11 +37,32 @@ const Content = () => {
             </div>
         )
     }
+    
+    
+    
+    type TAbout = {
+        Icon: JSX.Element,
+        header: string,
+        p: string,
+    }
+    const AboutIcon = "text-5xl border transition block duration-200 text-white w-fit h-fit p-3 border-white text-white rounded-full group-hover:bg-white group-hover:text-blue-500 transition" 
+     function About ({Icon ,header, p}:TAbout) {
+        return(
+            <div className="group text-center text-white w-9/12 md:w-80 flex justify-center items-center flex-col md:flex-row gap-1 md:px-10 transition duration-200">
+                {Icon}
+                <div>
+                    <h1 className="mt-3 md:ml-3 text-4xl font-bold block">{header}</h1>
+                    <p className="block">{p}</p>
+                </div>
+            </div>
+        )
+    }
+
 
   return (
     <main>
             {/* 3 Boxes  */}
-        <section className="flex px-5 gap-5 flex-col my-10 md:flex-row">
+        <section className="flex px-5 justify-center items-stretch gap-5 flex-col my-10 mx-auto md:flex-row max-w-[1460px]">
             <InfoBox 
                 info="Info1"
                 header="Emergency Cases"
@@ -82,8 +103,27 @@ const Content = () => {
         </section>
 
             {/* About */}
-        <section>
-            
+        <section className="bg-blue-500 text-white py-10 flex flex-col md:flex-row items-center md:justify-around justify-center md:flex-wrap gap-y-10 ">
+            <About 
+                Icon={<MdOutlineBedroomChild className={AboutIcon} />}
+                header="255"
+                p='Hospital Rooms'
+            />
+            <About 
+                Icon={<FaUserDoctor className={AboutIcon} />}
+                header="80"
+                p='Specialist Doctors'
+            />
+            <About 
+                Icon={<MdMan className={AboutIcon} />}
+                header="138"
+                p='Patients'
+            />
+            <About 
+                Icon={<FaRegCalendarPlus className={AboutIcon} />}
+                header="32"
+                p='Years of Experience'
+            />
         </section>
     </main>
   )
