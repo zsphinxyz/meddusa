@@ -1,11 +1,14 @@
+'use client'
 import Link from "next/link"
 import {GiHospitalCross} from 'react-icons/gi'
 import {TbBuildingHospital} from 'react-icons/tb'
 import {FaTruckMedical, FaUserDoctor, FaRegCalendarPlus} from 'react-icons/fa6'
 import {MdOutlineBedroomChild, MdMan} from 'react-icons/md'
+import {motion, useScroll} from 'framer-motion'
+import { useState } from "react"
+import Button from '@/comps/button'
 
 const Content = () => {
-
     type TInfo = {
         info: string,
         header: string
@@ -124,6 +127,9 @@ const Content = () => {
                 header="32"
                 p='Years of Experience'
             />
+        </section>
+
+        <section>
         </section>
     </main>
   )

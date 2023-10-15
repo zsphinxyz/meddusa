@@ -1,4 +1,5 @@
 "use client"
+import Button from '@/comps/button'
 import Image from "next/image"
 import logo from '@/assets/logo.png'
 import { BiMenu } from 'react-icons/bi'
@@ -70,7 +71,7 @@ const Header = () => {
 
             </div>
 
-            <button className="hidden lg:block bg-blue-600 text-white px-6 py-1 rounded-md hover:bg-blue-800 transition outline-none">Book Appointment</button>
+            <Button text='Book Appointment' style="!hidden lg:!block" />
         </div>
     )
 }
