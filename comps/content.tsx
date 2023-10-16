@@ -7,12 +7,16 @@ import {MdOutlineBedroomChild, MdMan} from 'react-icons/md'
 import {motion, useScroll} from 'framer-motion'
 import { useState } from "react"
 import Button from '@/comps/button'
+import video from '@/assets/video-bg.jpg'
+
+import Image from "next/image"
 
 const Content = () => {
     type TInfo = {
         info: string,
         header: string
     }
+
     function InfoBox ({info, header}:TInfo) {
         return(
             <div className=" w-[90%] bg-blue-500 mx-auto p-7 rounded-md text-white cursor-default hover:shadow-xl shadow-stone-900 hover:-translate-y-1 transition duration-500">
@@ -23,7 +27,6 @@ const Content = () => {
             </div>
         )
     }
-
 
     type TIconText = {
         Icon: JSX.Element,
@@ -42,16 +45,16 @@ const Content = () => {
     }
     
     
-    
     type TAbout = {
         Icon: JSX.Element,
         header: string,
         p: string,
     }
+
     const AboutIcon = "text-5xl border transition block duration-200 text-white w-fit h-fit p-3 border-white text-white rounded-full group-hover:bg-white group-hover:text-blue-500 transition" 
      function About ({Icon ,header, p}:TAbout) {
         return(
-            <div className="group text-center text-white w-9/12 md:w-80 flex justify-center items-center flex-col md:flex-row gap-1 md:px-10 transition duration-200">
+            <div className="group text-center text-white w-9/12 md:w-72 flex justify-center items-center flex-col md:flex-row gap-1 md:px-10 transition duration-200">
                 {Icon}
                 <div>
                     <h1 className="mt-3 md:ml-3 text-4xl font-bold block">{header}</h1>
@@ -129,7 +132,30 @@ const Content = () => {
             />
         </section>
 
-        <section>
+        <section className="px-5 py-3 md:px-10">
+            <h1 className=" text-center text-2xl font-bold ">We Offer Different Services To Improve Your Health</h1>
+            <p className=" text-center text-md my-5 text-slate-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque nulla facere deleniti.</p>
+
+            <div className="flex flex-col md:flex-row">
+                <div className="text-slate-700">
+                    <h1 className=" text-3xl font-bold text-black mb-8">Who We Are</h1>
+                    <p className="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolorum veritatis praesentium accusamus alias, quos fugit fugiat. Odio animi perferendis possimus praesentium excepturi esse vitae? Perferendis voluptas distinctio natus cupiditate.</p>
+                    <br />
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque reiciendis nesciunt eligendi?</p>
+                    <ul className='my-5 list-inside list-disc grid grid-cols-1 grid-rows-6 grid-flow-col md:grid-cols-2 md:grid-rows-3'> 
+                        <li>List 1</li>
+                        <li>List 2</li>
+                        <li>List 3</li>
+                        <li>List 4</li>
+                        <li>List 5</li>
+                        <li>List 6</li>
+                    </ul>
+                </div>
+
+                <div className="px-5 self-center md:h-[400px] grid items-center">
+                    <Image src={video} alt='video' className=" bg-cover object-cover rounded" />
+                </div>
+            </div>
         </section>
     </main>
   )
