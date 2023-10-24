@@ -41,7 +41,7 @@ const Header = () => {
                 <h1 className=" text-2xl font-extrabold text-slate-800 select-none" >Med<span className="text-red-500">-</span>Dusa</h1>
             </div>
 
-            <div>
+            <div className=' ml-auto lg:ml-0'>
                 <button onClick={() => setMenu(!menu)} className=" md:hidden">
                     {menu ? <BiMenu className=" text-[40px] hover:cursor-pointer" /> :
                         <AiOutlineClose className=" text-[40px] hover:cursor-pointer" />
@@ -51,18 +51,18 @@ const Header = () => {
                 <div className="hidden md:flex gap-2 lg:gap-4">
                     {
                         nav.map(i => (
-                            <Link key={i.id} href={i.nav} className=" px-3 text-blue-600 font-bold hover:text-blue-800"> {i.nav} </Link>
+                            <Link key={i.id} href={i.nav} className=" px-3 text-blue-600 text-xl font-bold hover:text-blue-800"> {i.nav} </Link>
                         ))
                     }
                 </div>
 
-
+                        {/* Horizontal Menu  */}
                 {!menu &&
                     <div className="relative">
-                        <ul className="absolute right-5 top-5 [&>*]:leading-3">
+                        <ul className="absolute right-[-50px] top-5 bg-blue-100 text-xl md:hidden w-96 flex flex-col z-50">
                         {
                             nav.map(i => (
-                                <Link key={i.id} href={i.nav} className=" px-3 text-blue-600 font-bold hover:text-blue-800"> {i.nav} </Link>
+                                <Link key={i.id} href={i.nav} className="text-center py-3 text-blue-500 font-bold hover:bg-blue-500 hover:text-white"> {i.nav} </Link>
                             ))
                             }  
                         </ul>
