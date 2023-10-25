@@ -1,22 +1,42 @@
 'use client'
 import Link from "next/link"
-import {GiHospitalCross} from 'react-icons/gi'
-import {TbBuildingHospital} from 'react-icons/tb'
-import {FaTruckMedical, FaUserDoctor, FaRegCalendarPlus, FaRing} from 'react-icons/fa6'
-import {MdOutlineBedroomChild, MdMan} from 'react-icons/md'
-import {VscDebugBreakpointLog} from 'react-icons/vsc'
-import {motion, useScroll} from 'framer-motion'
-import { useState } from "react"
-import Button from '@/comps/button'
-import video from '@/assets/video-bg.jpg'
-
 import Image from "next/image"
+import { useState } from "react"
+
+import {GiHospitalCross} from 'react-icons/gi'
+import {TbBuildingHospital, TbClipboardList, TbHeartFilled} from 'react-icons/tb'
+import {FaTruckMedical, FaUserDoctor, FaRegCalendarPlus, FaTooth, FaScissors} from 'react-icons/fa6'
+import {MdOutlineBedroomChild, MdMan, MdHearing, MdRemoveRedEye} from 'react-icons/md'
+import {VscDebugBreakpointLog} from 'react-icons/vsc'
+import {BiSolidDonateBlood, BiSolidCheckSquare} from 'react-icons/bi'
+import {AiFillCloseSquare} from 'react-icons/ai'
+
+
+import {motion, useScroll} from 'framer-motion'
+
+import Button from '@/comps/button'
+
 
 // images 
+import video from '@/assets/video-bg.jpg'
 import p1 from "@/assets/pf1.jpg"
 import p2 from "@/assets/pf2.jpg"
 import p3 from "@/assets/pf3.jpg"
 import p4 from "@/assets/pf4.jpg"
+
+import n1 from "@/assets/blog1.jpg"
+import n2 from "@/assets/blog2.jpg"
+import n3 from "@/assets/blog3.jpg"
+
+import c1 from "@/assets/client1.png"
+import c2 from "@/assets/client2.png"
+import c3 from "@/assets/client3.png"
+import c4 from "@/assets/client4.png"
+import c5 from "@/assets/client5.png"
+const clients = [c1, c2, c3, c4, c5]
+
+import contact from "@/assets/contact-img.png"
+
 
 const Content = () => {
     type TInfo = {
@@ -75,19 +95,48 @@ const Content = () => {
     const TreatIcon = 'text-5xl'
     function Treatment ({Icon, header}:TAbout) {
         return(
-            <div className="flex px-10 items-center gap-3">
+            <div className="flex px-3 md:px-5 items-center gap-3">
                 <div className="text-blue-500">
                     {Icon}
                 </div>
 
-                <div>
+                <div className=" ml-3 md:ml-0">
                     <h1 className="text-2xl font-bold text-slate-700 mb-2 lg:text-xl">{header}</h1>
-                    <p className="text-slate-600">Lorem ipsum dolor sit amet consectetur adipisicing elitas corporis quibusdam hic? Labore, aliquid ea.</p>
+                    <p className="text-slate-600 whitespace-break-spaces">Lorem ipsum dolor sit amet consectetur adipisicing elitas corporis quibusdam hic? Labore, aliquid ea.</p>
                 </div>
             </div>
         )
     }
 
+    const BookIcon = "text-6xl mx-auto text-blue-500"
+    function Book({Icon, header, p}:TAbout) {
+        return(
+            <div className="flex flex-col border border-slate-400 rounded-lg gap-2 justify-center p-5 w-full max-w-[600px]">
+                {Icon}
+                <p className="text-2xl text-slate-700 font-bold text-center">{header}</p>
+                <h1 className="bold text-center text-4xl font-bold text-blue-500 ">${p} <span className="text-sm font-normal text-slate-500">/Per Visit</span></h1>
+                <ul className="flex flex-col gap-5 mt-5 text-lg text-slate-700 w-full">
+                    <li className="flex">Lorem ipsum dolor sit amet. <BiSolidCheckSquare className="inline-block ml-auto text-blue-500 text-2xl" /> </li>
+                    <li className="flex">Lorem ipsum dolor sit amet. <BiSolidCheckSquare className="inline-block ml-auto text-blue-500 text-2xl" /> </li>
+                    <li className="flex">Lorem ipsum dolor sit amet. <BiSolidCheckSquare className="inline-block ml-auto text-blue-500 text-2xl" /> </li>
+                    <li className="flex">Lorem ipsum dolor sit amet. <AiFillCloseSquare className="inline-block ml-auto text-slate-500 text-2xl" /> </li>
+                    <li className="flex">Lorem ipsum dolor sit amet. <AiFillCloseSquare className="inline-block ml-auto text-slate-500 text-2xl" /> </li>
+                </ul>
+                <Button text="Book Now" style='w-full mt-5'/>
+            </div>
+        )
+    }
+
+    function News({Icon, header}:TAbout) {
+        return(
+            <div className="block max-w-[500px] mx-auto border-b-2 border-gray-300 hover:border-blue-500 transition pb-3">
+                {Icon}
+                <Button text="22 Aug, 2020" style="mt-3"/>
+                <h1 className="text-2xl lg:text-3xl font-bold text-slate-700 mt-5 mb-2">{header}</h1>
+                <p className=" text-lg lg:text-xl text-slate-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae perferendis laborum ullam maxime iste ratione sint velit suscipit?</p>
+            </div>
+        )
+    }
 
   return (
     <main>
@@ -187,8 +236,8 @@ const Content = () => {
             <h1 className="text-3xl md:text-4xl text-white font-bold max-w-[700px] mx-auto">Do you need Emergency Medical Care? Call @ +95 999 999 999</h1>
             <p className="text-white text-lg lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit repudiandae eos.</p>
             <div className="flex gap-3 w-full items-center justify-center">
-                <Button text="Contact Now" style="bg-white text-blue-700"  />
-                <Button text="Learn More" style="bg-transparent border border-white"  />
+                <Button text="Contact Now" style="!bg-white !text-blue-500"  />
+                <Button text="Learn More" style="!bg-transparent !border !border-white"  />
             </div>
         </section>
 
@@ -197,7 +246,7 @@ const Content = () => {
             <h1 className="text-3xl md:text-4xl text-center text-slate-700 font-bold ">We maintain Cleanliness Rules Inside Our Hospital</h1>
             <p className="my-10 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
 
-            <div className="flex gap-5 w-11/12 my-auto overflow-scroll mx-auto">
+            <div className="flex gap-5 w-11/12 my-auto overflow-x-scroll mx-auto">
                 <Image src={p1} alt='01' className=""/>
                 <Image src={p2} alt='02' className=""/>
                 <Image src={p3} alt='03' className=""/>
@@ -207,39 +256,121 @@ const Content = () => {
         </section>
 
             {/* Improve your health section  */}
-        <section className="mb-28 px-5">
+        <section className="mb-10 md:mb-28 px-1 md:px-5">
             <h1 className="text-3xl md:text-4xl text-center text-slate-700 font-bold ">We Offer Different Services to Improve Your Health</h1>
-            <p className="my-10 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
+            <p className="my-10 text-center md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
 
             <div className="grid gap-y-10 gap-x-3 my-auto md:grid-cols-2 lg:grid-cols-3 max-w-[1200px] mx-auto">
                 <Treatment
-                    Icon={<GiHospitalCross className={TreatIcon}/>}
+                    Icon={<TbClipboardList className={TreatIcon}/>}
                     header="General Treatments"
                 />
                 <Treatment
-                    Icon={<GiHospitalCross className={TreatIcon}/>}
+                    Icon={<FaTooth className={TreatIcon}/>}
                     header="Teeth Whitening"
                 />
                 <Treatment
-                    Icon={<GiHospitalCross className={TreatIcon}/>}
+                    Icon={<TbHeartFilled className={TreatIcon}/>}
                     header="Heart Surgery"
                 />
                 <Treatment
-                    Icon={<GiHospitalCross className={TreatIcon}/>}
+                    Icon={<MdHearing className={TreatIcon}/>}
                     header="Ear Treatment"
                 />
                 <Treatment
-                    Icon={<GiHospitalCross className={TreatIcon}/>}
+                    Icon={<MdRemoveRedEye className={TreatIcon}/>}
                     header="Vision Problems"
                 />
                 <Treatment
-                    Icon={<GiHospitalCross className={TreatIcon}/>}
+                    Icon={<BiSolidDonateBlood className={TreatIcon}/>}
                     header="Blood Transfusion"
                 />
+            </div>
+        </section>
+
+            {/* Provide Section  */}
+        <section className="px-5 mb-10 md:mb-28">
+            <div className="md:w-[620px] mx-auto">
+                <h1  className="text-3xl md:text-4xl text-center text-slate-700 font-bold ">We Provide You The Best Treatment In Resonable Price</h1>
+                <p className="my-10 text-center md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
+            </div>
+
+            <div className="flex flex-col gap-3 w-full justify-center items-center lg:flex-row lg:max-w-[1200px] mx-auto">
+                <Book Icon={<FaScissors className={BookIcon} />} header="Plastic Surgery" p="399" />
+                <Book Icon={<FaTooth className={BookIcon} />} header="Teeth Whitening" p="299"  />
+                <Book Icon={<TbHeartFilled className={BookIcon} />} header="Heart Surgery" p="199"  />
             </div>
 
         </section>
 
+            {/* News  */}
+        <section className="flex flex-col">
+            <div className="md:w-[620px] mx-auto">
+                <h1  className="text-3xl md:text-4xl text-center text-slate-700 font-bold ">Keep Up With Our Most Recent Medical News.</h1>
+                <p className="my-10 text-center md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
+            </div>
+
+            <div className="flex flex-col px-5 lg:flex-row gap-5 max-w-[1900px] mx-auto mb-10 lg:mb-28">
+                <News Icon={<Image src={n1} alt='n1' />} header="We have announced our new product."/>
+                <News Icon={<Image src={n2} alt='n2' />} header="Top Five Ways for Solving Teeth Problems."/>
+                <News Icon={<Image src={n3} alt='n3' />} header="We Provide Highly Business Solutons."/>
+            </div>
+        </section>
+
+            {/* Sponsors  */}
+        <section className="flex flex-col bg-blue-500 py-10 my-10 md:my-28">
+            <h1 className="text-3xl md:text-5xl text-center font-bold mb-5 text-white capitalize">Companies we work with Together</h1>
+            <div className="flex overflow-x-scroll scroll-smooth">
+                {
+                clients.map((img, index) => (
+                    <Image key={index} height={500} src={img} alt='client' className="object-contain mx-20 aspect-video"/>
+                    ))
+                }
+            </div>
+        </section>
+
+            {/* form  */}
+        <section className="max-w-[1000px] mx-auto mb-10 md:mb-28">
+            <div className="md:w-[620px] mx-auto">
+                <h1  className="text-3xl md:text-4xl text-center text-slate-700 font-bold capitalize ">we are always ready to help you. Book an appointment</h1>
+                <p className="my-10 text-center md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
+            </div>
+            <div className="flex items-center ">
+                <form className="flex flex-col items-center w-full">
+                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200"  type="text" placeholder="Enter Name" />
+                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" type="email" placeholder="Enter Email" />
+                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" type="tel" placeholder="Enter Phone" />
+                    <select  className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200 ">
+                        <option value="d1" disabled>Department</option>
+                        <option value="d2">Cardiac</option>
+                        <option value="d3">Neurology</option>
+                        <option value="d4">Dentist</option>
+                        <option value="d5">Gastroenterology</option>
+                        <option value="d6">Others</option>
+                    </select>
+                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" type="date" placeholder="Enter Date" />
+                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" type="number" min={1} max={120} placeholder="Enter Age" />
+                    <textarea className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" cols={5} rows={5} placeholder="Enter Additonal Information"></textarea>
+                    <Button text="Book an Appointment" />
+                </form>
+
+                <div className="hidden md:block ml-auto w-full h-full self-start">
+                    <Image src={contact} width={500} alt='contact' />
+                </div>
+            </div>
+        </section>
+
+            {/* NewsLatter  */}
+        <section className="bg-blue-500 py-10">
+            <div className="md:w-[620px] mx-auto pb-5">
+                <h1  className="text-3xl md:text-4xl text-center text-slate-100 font-bold capitalize ">Sign Up for Newsletter</h1>
+            </div>
+
+            <div className="flex flex-col justify-center items-center gap-2 md:flex-row max-w-[520px] mx-auto">
+                <input type="email" className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 hover:bg-blue-200" placeholder="Enter Your Email"/>
+                <Button text='Subscribe' style="!bg-white !text-blue-500" />
+            </div>
+        </section>
 
 
     </main>

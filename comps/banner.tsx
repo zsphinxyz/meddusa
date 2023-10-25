@@ -6,7 +6,7 @@ import banner2 from '@/assets/slider2.jpg'
 import banner3 from '@/assets/slider3.jpg'
 
 import Image from 'next/image'
-import {motion, useMotionValue} from 'framer-motion' 
+import {AnimatePresence, motion} from 'framer-motion' 
 import { useState, useEffect } from 'react'
 
 
@@ -38,16 +38,18 @@ const Banner = () => {
         <div className="w-fit h-full flex justify-center items-center relative">
 
             <div className=" px-3 md:px-10 w-screen h-[600px] flex gap-7 flex-col justify-center items-start relative">
+              <AnimatePresence>
                 <motion.div 
-                  // transition={{ease: 'easeIn', repeat: Infinity, repeatDelay: 4.7 }}
-                  // variants={bannerVariants}
-                  // initial="start"
-                  // animate="end"
-                  // exit="start"
+                  transition={{ease: 'easeIn', repeat: Infinity, repeatDelay: 4.7 }}
+                  variants={bannerVariants}
+                  initial="start"
+                  animate="end"
+                  exit="start"
                   className='absolute left-0 top-0 w-full h-full -z-20'
                 >
-                  <Image src={banners[banner-1]} alt='banner1' className='h-full object-cover object-center'/>
+                    <Image src={banners[banner-1]} alt='banner1' className='h-full object-cover object-center'/>
                 </motion.div>
+              </AnimatePresence>
                 <motion.h1 variants={transitionVarients} initial="initial" animate='animate' className=" font-bold text-3xl md:text-4xl">We Provide <span className="text-blue-500">Medical </span> Services That You Can <span className="text-blue-500">Trust!</span></motion.h1>
                 <motion.p variants={transitionVarients} initial="initial" animate='animate'  className='text-lg font-semibold'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga quidem ratione consectetur aliquam consequuntur sequi.</motion.p>
              
