@@ -5,10 +5,10 @@ import { useState } from "react"
 
 import {GiHospitalCross} from 'react-icons/gi'
 import {TbBuildingHospital, TbClipboardList, TbHeartFilled} from 'react-icons/tb'
-import {FaTruckMedical, FaUserDoctor, FaRegCalendarPlus, FaTooth, FaScissors} from 'react-icons/fa6'
+import {FaTruckMedical, FaUserDoctor, FaRegCalendarPlus, FaTooth, FaScissors, FaFacebookF, FaInstagram, FaTwitter, FaPinterestP} from 'react-icons/fa6'
 import {MdOutlineBedroomChild, MdMan, MdHearing, MdRemoveRedEye} from 'react-icons/md'
 import {VscDebugBreakpointLog} from 'react-icons/vsc'
-import {BiSolidDonateBlood, BiSolidCheckSquare} from 'react-icons/bi'
+import {BiSolidDonateBlood, BiSolidCheckSquare, BiSend} from 'react-icons/bi'
 import {AiFillCloseSquare} from 'react-icons/ai'
 
 
@@ -139,7 +139,7 @@ const Content = () => {
     }
 
   return (
-    <main>
+    <section>
             {/* 3 Boxes  */}
         <section className="flex px-5 justify-center items-stretch gap-5 flex-col my-10 mx-auto md:flex-row max-w-[1460px]">
             <InfoBox 
@@ -350,7 +350,7 @@ const Content = () => {
                     </select>
                     <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" type="date" placeholder="Enter Date" />
                     <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" type="number" min={1} max={120} placeholder="Enter Age" />
-                    <textarea className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" cols={5} rows={5} placeholder="Enter Additonal Information"></textarea>
+                    <textarea className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" cols={5} rows={5} placeholder="Enter Additional Information"></textarea>
                     <Button text="Book an Appointment" />
                 </form>
 
@@ -361,7 +361,7 @@ const Content = () => {
         </section>
 
             {/* NewsLatter  */}
-        <section className="bg-blue-500 py-10">
+        <section className="bg-blue-500 py-10 mb-10 md:mb-28">
             <div className="md:w-[620px] mx-auto pb-5">
                 <h1  className="text-3xl md:text-4xl text-center text-slate-100 font-bold capitalize ">Sign Up for Newsletter</h1>
             </div>
@@ -372,8 +372,55 @@ const Content = () => {
             </div>
         </section>
 
+            {/* Footer */}
+        <footer className=" bg-blue-500 text-white py-10 px-5 ">
+            <div className="max-w-[1400px] mx-auto flex flex-wrap gap-8 items-start justify-start lg:justify-center"> 
+                <div className="flex-1 max-w-[300px]">
+                    <h1 className="text-2xl font-bold ">About us</h1>
+                    <div className="w-32 h-1 bg-white my-3" />
+                    <p className="text-lg py-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, voluptas officiis! Saepe officia totam, ratione velit obcaecati quod minima error.</p>
+                    <div className="text-4xl flex gap-5 my-5">
+                        <FaFacebookF className="border-white border-2 p-2 rounded-full" />
+                        <FaTwitter className="border-white border-2 p-2 rounded-full" />
+                        <FaInstagram className="border-white border-2 p-2 rounded-full" />
+                        <FaPinterestP className="border-white border-2 p-2 rounded-full" />
+                    </div>
+                </div>
 
-    </main>
+                <div className="lg:px-12">
+                    <h1 className="text-2xl font-bold ">Quick Links</h1>
+                    <div className="w-32 h-1 bg-white my-3" />
+                    <ul className="text-xl flex flex-col gap-3 list-disc ml-7">
+                        <li>Home</li>
+                        <li>About Us</li>
+                        <li>Services</li>
+                        <li>Blogs</li>
+                        <li>Contact</li>
+                        <li>FAQ</li>
+                    </ul>
+                </div>
+
+                <div className="lg:px-12">
+                    <h1 className="text-2xl font-bold ">Open Hours</h1>
+                    <div className="w-32 h-1 bg-white my-3" />
+                    <ul className="text-xl flex flex-col gap-3 ml-7 md:ml-0">
+                        <li className="flex ">Monday - Friday <span className="ml-auto">8:00 - 20:00</span>   </li>
+                        <li className="flex ">Saturday        <span className="ml-auto">8:00 - 20:00</span>   </li>
+                        <li className="flex ">Sunday          <span className="ml-auto">8:00 - 20:00</span>   </li>
+                    </ul>
+                </div>
+
+                <div className="mx-auto max-w-[500px] flex-1 px-5">
+                <h1 className="text-2xl font-bold ">Newsletter</h1>
+                    <div className="w-32 h-1 bg-white my-3" />
+                    <div className="flex w-full">
+                        <input type="text" placeholder="Your Email Address..." className="bg-transparent border-white border-2 px-2 flex-1 rounded-s-lg"/>
+                        <BiSend className="text-5xl text-blue-500 bg-white p-1 rounded-e-lg" />
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
   )
 }
 
