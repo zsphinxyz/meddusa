@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import {GiHospitalCross} from 'react-icons/gi'
 import {TbBuildingHospital, TbClipboardList, TbHeartFilled} from 'react-icons/tb'
@@ -12,7 +12,7 @@ import {BiSolidDonateBlood, BiSolidCheckSquare, BiSend} from 'react-icons/bi'
 import {AiFillCloseSquare} from 'react-icons/ai'
 
 
-import {motion, useScroll} from 'framer-motion'
+import {motion, useInView, useScroll} from 'framer-motion'
 
 import Button from '@/comps/button'
 
@@ -37,8 +37,23 @@ const clients = [c1, c2, c3, c4, c5]
 
 import contact from "@/assets/contact-img.png"
 
-
 const Content = () => {
+
+    const contentV = {
+        init: {opacity:1},
+        view: {opacity:1, transition:{duration: 1.2}, viewport:{once:false}}
+    }
+
+    const leftV = {
+        init: {opacity:0, x:-100},
+        view: {opacity:1, x:0, transition:{duration: 1.2}, viewport:{once:false}}
+    }
+
+    const rightV = {
+        init: {opacity:0, x:100},
+        view: {opacity:1, x:0, transition:{duration: 1.2}, viewport:{once:false}}
+    }
+
     type TInfo = {
         info: string,
         header: string
@@ -69,8 +84,7 @@ const Content = () => {
                 <p className="text-lg text-slate-600">{p}</p>
             </div>
         )
-    }
-    
+    } 
     
     type TAbout = {
         Icon: JSX.Element,
@@ -90,7 +104,6 @@ const Content = () => {
             </div>
         )
     }
-
 
     const TreatIcon = 'text-5xl'
     function Treatment ({Icon, header}:TAbout) {
@@ -139,9 +152,13 @@ const Content = () => {
     }
 
   return (
-    <section>
+    <motion.section
+        variants={contentV}
+        initial="init"
+        whileInView="view"
+    >
             {/* 3 Boxes  */}
-        <section className="flex px-5 justify-center items-stretch gap-5 flex-col my-10 mx-auto md:flex-row max-w-[1460px]">
+        <motion.section className="flex px-5 justify-center items-stretch gap-5 flex-col my-10 mx-auto md:flex-row max-w-[1460px]" variants={leftV}>
             <InfoBox 
                 info="Info1"
                 header="Emergency Cases"
@@ -154,10 +171,10 @@ const Content = () => {
                 info="Info3"
                 header="Opening Hours"
             />
-        </section>
+        </motion.section>
 
             {/* 3 Icons */}
-        <section className="my-10 md:my-28">
+        <motion.section className="my-10 md:my-28" variants={rightV}>
             <h1 className="text-center px-10 text-3xl text-slate-700 font-bold mb-5">We Are Always Ready To Help You & Your Family</h1>
             <p className="text-center mb-7">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, eveniet.</p>
             <div className="flex flex-col md:flex-row gap-10">
@@ -179,10 +196,13 @@ const Content = () => {
                     p = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, atque?"
                 />
             </div>
-        </section>
+        </motion.section>
 
             {/* About */}
-        <section className="my-10 md:my-28 bg-blue-500 text-white py-10 md:py-20 flex flex-col md:flex-row items-center md:justify-around justify-center md:flex-wrap gap-y-10 bg-[url('../assets/bread-bg.jpg')] bg-cover bg-center relative before:w-full before:h-full before:bg-blue-500/95 md:before:bg-blue-500/70 before:absolute before:inset-0">
+        <motion.section 
+            className="my-10 md:my-28 bg-blue-500 text-white py-10 md:py-20 flex flex-col md:flex-row items-center md:justify-around justify-center md:flex-wrap gap-y-10 bg-[url('../assets/bread-bg.jpg')] bg-cover bg-center relative before:w-full before:h-full before:bg-blue-500/95 md:before:bg-blue-500/70 before:absolute before:inset-0"
+            variants={leftV}
+        >
             <About 
                 Icon={<MdOutlineBedroomChild className={AboutIcon} />}
                 header="255"
@@ -203,10 +223,10 @@ const Content = () => {
                 header="32"
                 p='Years of Experience'
             />
-        </section>
+        </motion.section>
 
             {/* Who Are We section */}
-        <section className="my-10 md:mb-28 px-5 py-3 md:px-10">
+        <motion.section className="my-10 md:mb-28 px-5 py-3 md:px-10" variants={rightV}>
             <h1 className=" text-center text-2xl md:text-4xl font-bold text-slate-700">We Offer Different Services To Improve Your Health</h1>
             <p className=" text-center text-xl text-md my-5 text-slate-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque nulla facere deleniti.</p>
 
@@ -229,20 +249,20 @@ const Content = () => {
                     <Image src={video} alt='video' className=" bg-cover object-cover rounded" />
                 </div>
             </div>
-        </section>
+        </motion.section>
 
             {/* Emergency Call */}
-        <section className="my-10 md:mb-28 py-10 px-5 bg-blue-500 flex flex-col gap-10 text-center md:px-40 md:gap-16 md:py-16 md:bg-[url('../assets/call-bg.jpg')] bg-cover bg-blend-soft-light">
+        <motion.section className="my-10 md:mb-28 py-10 px-5 bg-blue-500 flex flex-col gap-10 text-center md:px-40 md:gap-16 md:py-16 md:bg-[url('../assets/call-bg.jpg')] bg-cover bg-blend-soft-light" variants={leftV}>
             <h1 className="text-3xl md:text-4xl text-white font-bold max-w-[700px] mx-auto">Do you need Emergency Medical Care? Call @ +95 999 999 999</h1>
             <p className="text-white text-lg lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit repudiandae eos.</p>
             <div className="flex gap-3 w-full items-center justify-center">
                 <Button text="Contact Now" style="!bg-white !text-blue-500"  />
                 <Button text="Learn More" style="!bg-transparent !border !border-white"  />
             </div>
-        </section>
+        </motion.section>
 
             {/* Maintain Section */}
-        <section className="px-5 mb-10 md:mb-28">
+        <motion.section className="px-5 mb-10 md:mb-28" variants={rightV}>
             <h1 className="text-3xl md:text-4xl text-center text-slate-700 font-bold ">We maintain Cleanliness Rules Inside Our Hospital</h1>
             <p className="my-10 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
 
@@ -253,10 +273,10 @@ const Content = () => {
                 <Image src={p4} alt='04' className=""/>
             </div>
 
-        </section>
+        </motion.section>
 
             {/* Improve your health section  */}
-        <section className="mb-10 md:mb-28 px-1 md:px-5">
+        <motion.section className="mb-10 md:mb-28 px-1 md:px-5" variants={leftV}>
             <h1 className="text-3xl md:text-4xl text-center text-slate-700 font-bold ">We Offer Different Services to Improve Your Health</h1>
             <p className="my-10 text-center md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
 
@@ -286,10 +306,10 @@ const Content = () => {
                     header="Blood Transfusion"
                 />
             </div>
-        </section>
+        </motion.section>
 
             {/* Provide Section  */}
-        <section className="px-5 mb-10 md:mb-28">
+        <motion.section className="px-5 mb-10 md:mb-28" variants={rightV}>
             <div className="md:w-[620px] mx-auto">
                 <h1  className="text-3xl md:text-4xl text-center text-slate-700 font-bold ">We Provide You The Best Treatment In Resonable Price</h1>
                 <p className="my-10 text-center md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
@@ -301,10 +321,10 @@ const Content = () => {
                 <Book Icon={<TbHeartFilled className={BookIcon} />} header="Heart Surgery" p="199"  />
             </div>
 
-        </section>
+        </motion.section>
 
             {/* News  */}
-        <section className="flex flex-col">
+        <motion.section className="flex flex-col" variants={leftV}>
             <div className="md:w-[620px] mx-auto">
                 <h1  className="text-3xl md:text-4xl text-center text-slate-700 font-bold ">Keep Up With Our Most Recent Medical News.</h1>
                 <p className="my-10 text-center md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
@@ -315,10 +335,10 @@ const Content = () => {
                 <News Icon={<Image src={n2} alt='n2' />} header="Top Five Ways for Solving Teeth Problems."/>
                 <News Icon={<Image src={n3} alt='n3' />} header="We Provide Highly Business Solutons."/>
             </div>
-        </section>
+        </motion.section>
 
             {/* Sponsors  */}
-        <section className="flex flex-col bg-blue-500 py-10 my-10 md:my-28">
+        <motion.section className="flex flex-col bg-blue-500 py-10 my-10 md:my-28" variants={rightV}>
             <h1 className="text-3xl md:text-5xl text-center font-bold mb-5 text-white capitalize">Companies we work with Together</h1>
             <div className="flex overflow-x-scroll scroll-smooth">
                 {
@@ -327,10 +347,10 @@ const Content = () => {
                     ))
                 }
             </div>
-        </section>
+        </motion.section>
 
             {/* form  */}
-        <section className="max-w-[1000px] mx-auto mb-10 md:mb-28">
+        <motion.section className="max-w-[1000px] mx-auto mb-10 md:mb-28" variants={leftV}>
             <div className="md:w-[620px] mx-auto">
                 <h1  className="text-3xl md:text-4xl text-center text-slate-700 font-bold capitalize ">we are always ready to help you. Book an appointment</h1>
                 <p className="my-10 text-center md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
@@ -358,10 +378,10 @@ const Content = () => {
                     <Image src={contact} width={500} alt='contact' />
                 </div>
             </div>
-        </section>
+        </motion.section>
 
             {/* NewsLatter  */}
-        <section className="bg-blue-500 py-10 mb-10 md:mb-28">
+        <motion.section className="bg-blue-500 py-10 mb-10 md:mb-28" variants={rightV}>
             <div className="md:w-[620px] mx-auto pb-5">
                 <h1  className="text-3xl md:text-4xl text-center text-slate-100 font-bold capitalize ">Sign Up for Newsletter</h1>
             </div>
@@ -370,10 +390,10 @@ const Content = () => {
                 <input type="email" className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 hover:bg-blue-200" placeholder="Enter Your Email"/>
                 <Button text='Subscribe' style="!bg-white !text-blue-500" />
             </div>
-        </section>
+        </motion.section>
 
             {/* Footer */}
-        <footer className=" bg-blue-500 text-white py-10 px-5 ">
+        <motion.footer className=" bg-blue-500 text-white py-10 px-5 " variants={leftV}>
             <div className="max-w-[1400px] mx-auto flex flex-wrap gap-8 items-start justify-start lg:justify-center"> 
                 <div className="flex-1 max-w-[300px]">
                     <h1 className="text-2xl font-bold ">About us</h1>
@@ -419,8 +439,8 @@ const Content = () => {
                     </div>
                 </div>
             </div>
-        </footer>
-    </section>
+        </motion.footer>
+    </motion.section>
   )
 }
 
