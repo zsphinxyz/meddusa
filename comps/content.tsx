@@ -12,7 +12,7 @@ import {BiSolidDonateBlood, BiSolidCheckSquare, BiSend} from 'react-icons/bi'
 import {AiFillCloseSquare} from 'react-icons/ai'
 
 
-import {motion, useInView, useScroll} from 'framer-motion'
+import {motion} from 'framer-motion'
 
 import Button from '@/comps/button'
 
@@ -38,7 +38,8 @@ const clients = [c1, c2, c3, c4, c5]
 import contact from "@/assets/contact-img.jpeg"
 
 const Content = () => {
-
+    
+        // Framer
     const contentV = {
         init: {opacity:1},
         view: {opacity:1, transition:{duration: 1.2}, viewport:{once:false}}
@@ -46,14 +47,15 @@ const Content = () => {
 
     const leftV = {
         init: {opacity:0, x:-100},
-        view: {opacity:1, x:0, transition:{duration: 1.2}, viewport:{once:false}}
+        view: {opacity:1, x:0, transition:{duration: 1.2}, viewport:{once:false}},
     }
 
     const rightV = {
         init: {opacity:0, x:100},
-        view: {opacity:1, x:0, transition:{duration: 1.2}, viewport:{once:false}}
+        view: {opacity:1, x:0, transition:{duration: 1.2}, viewport:{once:false}},
     }
 
+        // Types
     type TInfo = {
         info: string,
         header: string
@@ -359,10 +361,10 @@ const Content = () => {
             </div>
             <div className="flex items-center ">
                 <form className="flex flex-col items-center w-full">
-                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200"  type="text" placeholder="Enter Name" />
-                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" type="email" placeholder="Enter Email" />
-                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200" type="tel" placeholder="Enter Phone" />
-                    <select  className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 hover:bg-blue-200 ">
+                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 focus:bg-blue-100"  type="text" placeholder="Enter Name" />
+                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 focus:bg-blue-100" type="email" placeholder="Enter Email" />
+                    <input className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 focus:bg-blue-100" type="tel" placeholder="Enter Phone" />
+                    <select  className="text-xl px-3 py-2 rounded-lg w-9/12 border-blue-500 border-2 mb-5 focus:bg-blue-100 ">
                         <option value="d1" disabled>Department</option>
                         <option value="d2">Cardiac</option>
                         <option value="d3">Neurology</option>

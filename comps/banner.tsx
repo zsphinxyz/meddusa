@@ -53,7 +53,7 @@ const Banner = () => {
                 <motion.h1 variants={transitionVarients} initial="initial" animate='animate' className=" font-bold text-3xl md:text-4xl">We Provide <span className="text-blue-500">Medical </span> Services That You Can <span className="text-blue-500">Trust!</span></motion.h1>
                 <motion.p variants={transitionVarients} initial="initial" animate='animate'  className='text-lg font-semibold'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga quidem ratione consectetur aliquam consequuntur sequi.</motion.p>
              
-              <motion.div initial={{opacity:0, rotate:30}} animate={{opacity:1, rotate:0}} transition={ {duration:0.2, ease:'backOut' } } className="flex gap-3">
+              <motion.div initial={{opacity:0, y:-30}} animate={{opacity:1, y:0}} transition={ {duration:0.2, ease:'backOut' } } className="flex gap-3">
                 <Button text="Get Appointment" className=" bg-blue-500 hover:bg-blue-700 transition text-white px-4 py-2 rounded-md" />
                 <Button text="Connect Now" className=" bg-blue-500 hover:bg-blue-700 transition text-white px-4 py-2 rounded-md" />
               </motion.div>
