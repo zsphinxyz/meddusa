@@ -1,9 +1,9 @@
 'use client'
 import Button from '@/comps/button'
 
-import banner1 from '@/assets/slider.jpg'
-import banner2 from '@/assets/slider2.jpg'
-import banner3 from '@/assets/slider3.jpg'
+import banner1 from '@/assets/slider.png'
+import banner2 from '@/assets/slider2.png'
+import banner3 from '@/assets/slider3.png'
 
 import Image from 'next/image'
 import {AnimatePresence, motion} from 'framer-motion' 
@@ -29,12 +29,12 @@ const Banner = () => {
   const transitionVarients = {
     initial: {opacity:0, y:-100},
     animate: {opacity:1, y:0, 
-      transition: {duration:0.3, ease: 'easeOut'}
+      transition: {duration:0.3, ease:"easeIn"}
     },
   }
 
   return (
-    <div className="overflow-hidden min-h-[600px] bg-blue-500/30 ">
+    <div className="overflow-hidden min-h-[600px] bg-blue-500/30 cursor-default">
         <div className="w-fit h-full flex justify-center items-center relative">
 
             <div className=" px-3 md:px-10 w-screen h-[600px] flex gap-7 flex-col justify-center items-start relative">
@@ -47,7 +47,7 @@ const Banner = () => {
                   exit="start"
                   className='absolute left-0 top-0 w-full h-full -z-20'
                 >
-                    <Image src={banners[banner-1]} alt='banner1' className='h-full object-cover object-center'/>
+                    <Image src={banners[banner-1]} alt='banner1' className='w-full h-full object-cover object-center'/>
                 </motion.div>
               </AnimatePresence>
                 <motion.h1 variants={transitionVarients} initial="initial" animate='animate' className=" font-bold text-3xl md:text-4xl">We Provide <span className="text-blue-500">Medical </span> Services That You Can <span className="text-blue-500">Trust!</span></motion.h1>

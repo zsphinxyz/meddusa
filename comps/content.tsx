@@ -18,15 +18,15 @@ import Button from '@/comps/button'
 
 
 // images 
-import video from '@/assets/video-bg.jpg'
+import video from '@/assets/video-bg.jpeg'
 import p1 from "@/assets/pf1.jpg"
 import p2 from "@/assets/pf2.jpg"
 import p3 from "@/assets/pf3.jpg"
 import p4 from "@/assets/pf4.jpg"
 
-import n1 from "@/assets/blog1.jpg"
-import n2 from "@/assets/blog2.jpg"
-import n3 from "@/assets/blog3.jpg"
+import n1 from "@/assets/blog1.jpeg"
+import n2 from "@/assets/blog2.jpeg"
+import n3 from "@/assets/blog3.jpeg"
 
 import c1 from "@/assets/client1.png"
 import c2 from "@/assets/client2.png"
@@ -35,7 +35,7 @@ import c4 from "@/assets/client4.png"
 import c5 from "@/assets/client5.png"
 const clients = [c1, c2, c3, c4, c5]
 
-import contact from "@/assets/contact-img.png"
+import contact from "@/assets/contact-img.jpeg"
 
 const Content = () => {
 
@@ -92,11 +92,13 @@ const Content = () => {
         p?: string,
     }
 
-    const AboutIcon = "text-5xl border transition block duration-200 text-white w-fit h-fit p-3 border-white text-white rounded-full group-hover:bg-white group-hover:text-blue-500 transition" 
+    const AboutIcon = "text-5xl transition block duration-200 text-white w-fit h-fit text-white group-hover:text-blue-500" 
      function About ({Icon ,header, p}:TAbout) {
         return(
             <div className=" z-10 group text-center text-white w-9/12 md:w-72 flex justify-center items-center flex-col md:flex-row gap-1 md:px-10 transition duration-200">
-                {Icon}
+                <div className="p-3 border rounded-full group-hover:bg-white transition">
+                    {Icon}
+                </div>
                 <div>
                     <h1 className="mt-3 md:ml-3 text-4xl font-bold block">{header}</h1>
                     <p className="block">{p}</p>
@@ -156,6 +158,7 @@ const Content = () => {
         variants={contentV}
         initial="init"
         whileInView="view"
+        className="cursor-default"
     >
             {/* 3 Boxes  */}
         <motion.section className="flex px-5 justify-center items-stretch gap-5 flex-col my-10 mx-auto md:flex-row max-w-[1460px]" variants={leftV}>
@@ -230,7 +233,7 @@ const Content = () => {
             <h1 className=" text-center text-2xl md:text-4xl font-bold text-slate-700">We Offer Different Services To Improve Your Health</h1>
             <p className=" text-center text-xl text-md my-5 text-slate-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque nulla facere deleniti.</p>
 
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col md:flex-row justify-center">
                 <div className="text-slate-700">
                     <h1 className=" text-3xl font-bold text-slate-700 mb-8">Who We Are</h1>
                     <p className="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolorum veritatis praesentium accusamus alias, quos fugit fugiat. Odio animi perferendis possimus praesentium excepturi esse vitae? Perferendis voluptas distinctio natus cupiditate.</p>
@@ -245,14 +248,14 @@ const Content = () => {
                     </ul>
                 </div>
 
-                <div className="px-5 self-center md:h-[400px] grid items-center">
-                    <Image src={video} alt='video' className=" bg-cover object-cover rounded" />
+                <div className="px-5 self-center">
+                    <Image src={video} alt='video' className="rounded w-[400px] max-w-[900px] bg-cover" />
                 </div>
             </div>
         </motion.section>
 
             {/* Emergency Call */}
-        <motion.section className="my-10 md:mb-28 py-10 px-5 bg-blue-500 flex flex-col gap-10 text-center md:px-40 md:gap-16 md:py-16 md:bg-[url('../assets/call-bg.jpg')] bg-cover bg-blend-soft-light" variants={leftV}>
+        <motion.section className="my-10 md:mb-28 py-10 px-5 bg-blue-500 flex flex-col gap-10 text-center md:px-40 md:gap-16 md:py-16 md:bg-[url('../assets/call-bg.png')] bg-cover" variants={leftV}>
             <h1 className="text-3xl md:text-4xl text-white font-bold max-w-[700px] mx-auto">Do you need Emergency Medical Care? Call @ +95 999 999 999</h1>
             <p className="text-white text-lg lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit repudiandae eos.</p>
             <div className="flex gap-3 w-full items-center justify-center">
@@ -266,13 +269,12 @@ const Content = () => {
             <h1 className="text-3xl md:text-4xl text-center text-slate-700 font-bold ">We maintain Cleanliness Rules Inside Our Hospital</h1>
             <p className="my-10 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugit nam voluptate nobis vero.</p>
 
-            <div className="flex gap-5 w-11/12 my-auto overflow-x-scroll mx-auto">
+            <div className="flex gap-5 w-11/12 my-auto overflow-x-scroll justify-center">
                 <Image src={p1} alt='01' className=""/>
                 <Image src={p2} alt='02' className=""/>
                 <Image src={p3} alt='03' className=""/>
                 <Image src={p4} alt='04' className=""/>
             </div>
-
         </motion.section>
 
             {/* Improve your health section  */}
@@ -400,10 +402,10 @@ const Content = () => {
                     <div className="w-32 h-1 bg-white my-3" />
                     <p className="text-lg py-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, voluptas officiis! Saepe officia totam, ratione velit obcaecati quod minima error.</p>
                     <div className="text-4xl flex gap-5 my-5">
-                        <FaFacebookF className="border-white border-2 p-2 rounded-full" />
-                        <FaTwitter className="border-white border-2 p-2 rounded-full" />
-                        <FaInstagram className="border-white border-2 p-2 rounded-full" />
-                        <FaPinterestP className="border-white border-2 p-2 rounded-full" />
+                        <FaFacebookF    className="border-white w-fit hover:bg-white hover:text-blue-500 transition border-2 p-2 rounded-full" />
+                        <FaTwitter      className="border-white w-fit hover:bg-white hover:text-blue-500 transition border-2 p-2 rounded-full" />
+                        <FaInstagram    className="border-white w-fit hover:bg-white hover:text-blue-500 transition border-2 p-2 rounded-full" />
+                        <FaPinterestP   className="border-white w-fit hover:bg-white hover:text-blue-500 transition border-2 p-2 rounded-full" />
                     </div>
                 </div>
 
